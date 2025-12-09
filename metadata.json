@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Gesture Birthday Cake",
+  "description": "A high-fidelity 3D interactive birthday cake made of particles and photos, controlled by hand gestures using MediaPipe.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

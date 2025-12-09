@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gesture Birthday Cake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #050505; }
+      #root { width: 100%; height: 100%; }
+      /* Custom scrollbar for instructions if needed */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #556B2F; border-radius: 3px; }
+    </style>
+    <script>
+      // Filter out MediaPipe/TFLite info logs that look like errors to users
+      (function() {
+        const originalLog = console.log;
+        const originalInfo = console.info;
+        const originalWarn = console.warn;
+
+        function shouldFilter(args) {
+          const msg = args.map(String).join(' ');
+          return msg.includes("TensorFlow Lite XNNPACK delegate for CPU") || 
+                 msg.includes("Created TensorFlow Lite XNNPACK delegate for CPU");
+        }
+
+        console.log = function(...args) { if(!shouldFilter(args)) originalLog.apply(console, args); };
+        console.info = function(...args) { if(!shouldFilter(args)) originalInfo.apply(console, args); };
+        console.warn = function(...args) { if(!shouldFilter(args)) originalWarn.apply(console, args); };
+      })();
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "@react-three/postprocessing": "https://aistudiocdn.com/@react-three/postprocessing@^3.0.4",
+    "three": "https://aistudiocdn.com/three@^0.181.2",
+    "@react-three/drei": "https://aistudiocdn.com/@react-three/drei@^10.7.7",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "zustand": "https://aistudiocdn.com/zustand@^5.0.9",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "@mediapipe/tasks-vision": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/+esm",
+    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
